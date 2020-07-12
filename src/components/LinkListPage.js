@@ -6,10 +6,14 @@ import LinkList from './LinkList'
 const LinkListPageQuery = graphql`
     query LinkListPageQuery {
         feed(last: 100, orderBy: { createdAt: desc }) {
+            # links {
+            #     ...LinkList_links
+            # }
             ...LinkList_feed
         }
     }
 `
+
 class LinkListPage extends Component {
     render() {
         return (
@@ -20,7 +24,7 @@ class LinkListPage extends Component {
                     if (error) {
                         return <div>{error.message}</div>
                     } else if (props) {
-                        return <LinkList viewer={props.viewer} />
+                        return <LinkList feed={props.feed} />
                     }
                     return <div>Loading</div>
                 }}

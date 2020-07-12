@@ -15,7 +15,8 @@ import {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTU5NDI0MjIyMX0.dTrZdLRSFKxhenn9PtQfUwbenj3KBM63B0gYfA1_bnw"
         },
         body: JSON.stringify({
             query: operation.text,
