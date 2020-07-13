@@ -4,7 +4,7 @@ type Query {
 }
 
 type Mutation {
-    post(url: String!, description: String!): Link!
+    post(linkInput: LinkInput!): Link!
     # Update a link
     updateLink(id: ID!, url: String, description: String): Link
     # Delete a link
@@ -42,6 +42,11 @@ type Link {
     url: String!
     postedBy: User
     votes: [Vote!]!
+}
+
+input LinkInput {
+    description: String!
+    url: String!
 }
 
 type Vote {

@@ -7,7 +7,7 @@ class LinkList extends Component {
         return (
             <div>
                 {this.props.feed.links.map((link) =>
-                    <Link link={link} />
+                    <Link key={link.__id} link={link} />
                 )}
             </div>
         )
@@ -20,7 +20,6 @@ export default createFragmentContainer(LinkList, {
             links {
                 ...Link_link
             }
-            # ...Link_link
         }`
     }
 )
