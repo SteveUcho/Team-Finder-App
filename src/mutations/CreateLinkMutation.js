@@ -9,6 +9,10 @@ const mutation = graphql`
             id
             url
             description
+            postedBy {
+                id
+                name
+            }
         }
     }
 `
@@ -20,7 +24,7 @@ export default (description, url, callback) => {
         link: {
             description,
             url
-        },
+        }
     }
 
     // 5

@@ -20,6 +20,10 @@ export type CreateLinkMutationResponse = {|
     +id: string,
     +url: string,
     +description: string,
+    +postedBy: ?{|
+      +id: string,
+      +name: string,
+    |},
   |}
 |};
 export type CreateLinkMutation = {|
@@ -37,6 +41,10 @@ mutation CreateLinkMutation(
     id
     url
     description
+    postedBy {
+      id
+      name
+    }
   }
 }
 */
@@ -50,7 +58,14 @@ var v0 = [
     "type": "LinkInput!"
   }
 ],
-v1 = [
+v1 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "id",
+  "storageKey": null
+},
+v2 = [
   {
     "alias": null,
     "args": [
@@ -65,13 +80,7 @@ v1 = [
     "name": "post",
     "plural": false,
     "selections": [
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "id",
-        "storageKey": null
-      },
+      (v1/*: any*/),
       {
         "alias": null,
         "args": null,
@@ -85,6 +94,25 @@ v1 = [
         "kind": "ScalarField",
         "name": "description",
         "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "concreteType": "User",
+        "kind": "LinkedField",
+        "name": "postedBy",
+        "plural": false,
+        "selections": [
+          (v1/*: any*/),
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "name",
+            "storageKey": null
+          }
+        ],
+        "storageKey": null
       }
     ],
     "storageKey": null
@@ -96,7 +124,7 @@ return {
     "kind": "Fragment",
     "metadata": null,
     "name": "CreateLinkMutation",
-    "selections": (v1/*: any*/),
+    "selections": (v2/*: any*/),
     "type": "Mutation"
   },
   "kind": "Request",
@@ -104,18 +132,18 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
     "name": "CreateLinkMutation",
-    "selections": (v1/*: any*/)
+    "selections": (v2/*: any*/)
   },
   "params": {
     "id": null,
     "metadata": {},
     "name": "CreateLinkMutation",
     "operationKind": "mutation",
-    "text": "mutation CreateLinkMutation(\n  $link: LinkInput!\n) {\n  post(linkInput: $link) {\n    id\n    url\n    description\n  }\n}\n"
+    "text": "mutation CreateLinkMutation(\n  $link: LinkInput!\n) {\n  post(linkInput: $link) {\n    id\n    url\n    description\n    postedBy {\n      id\n      name\n    }\n  }\n}\n"
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '4142f1d8a241f2c840fcd1607131f0dd';
+(node/*: any*/).hash = '6644ba2eaf32ed99b03e55de1c6667d1';
 
 module.exports = node;

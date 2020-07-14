@@ -4,6 +4,7 @@ import LinkListPage from './LinkListPage'
 import CreateLink from './CreateLink'
 import logo from '../logo.svg'
 import Header from './Header'
+import Login from './Login'
 import '../styles/App.css'
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
                 <div className='ph3 pv1 background-gray'>
                     <Switch>
                         <Route exact path='/' component={LinkListPage}/>
+                        <Route exact path='/login' component={Login}/>
                         <Route exact path='/create' component={CreateLink}/>
                     </Switch>
                 </div>
